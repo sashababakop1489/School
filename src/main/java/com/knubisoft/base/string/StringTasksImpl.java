@@ -7,7 +7,7 @@ public class StringTasksImpl implements StringTasks {
     @Override
     public String reverseString(String original) {
         if(original == null)
-            throw new IllegalArgumentException("Hi!");
+            throw new IllegalArgumentException("Hello!");
         String result = "";
         for (int i = 0; i < original.length(); i++) {
         result = original.charAt(i) + result;
