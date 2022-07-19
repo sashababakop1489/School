@@ -42,7 +42,7 @@ public class ListTasksImpl implements ListTasks {
             }
             return elements;
         } catch (NullPointerException | IllegalArgumentException | IndexOutOfBoundsException e) {
-            throw new IllegalArgumentException("Shit");
+            throw new IllegalArgumentException("Hi");
         }
     }
 
@@ -68,26 +68,26 @@ public class ListTasksImpl implements ListTasks {
         try {
             for (Integer integer : first) {
                 if (integer == null)
-                    throw new NullPointerException("Suck");
+                    throw new NullPointerException("Hello");
                 number = Long.parseLong(String.valueOf(integer));
                 arr.add(number);
             }
             for (Long aLong : second) {
                 if (aLong == null)
-                    throw new NullPointerException("Suck");
+                    throw new NullPointerException("Good");
                 number = Long.parseLong(String.valueOf(aLong));
                 arr.add(number);
             }
             for (String s : third) {
                 if (s == null)
-                    throw new NullPointerException("Suck");
+                    throw new NullPointerException("Hi");
                 number = Long.parseLong(String.valueOf(s));
                 arr.add(number);
             }
             return arr;
         }
         catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Dick");
+            throw new IllegalArgumentException("Good");
         }
     }
 
@@ -164,7 +164,7 @@ public class ListTasksImpl implements ListTasks {
             }
             return arr;
         } catch (NullPointerException e) {
-            throw new NoSuchElementException("Dick");
+            throw new NoSuchElementException("Perfect");
         }
 
     }
@@ -179,7 +179,7 @@ public class ListTasksImpl implements ListTasks {
             }
             return arr;
         } catch (NullPointerException e) {
-            throw new NoSuchElementException("Fuck");
+            throw new NoSuchElementException("Hello");
         }
     }
 
@@ -193,7 +193,7 @@ public class ListTasksImpl implements ListTasks {
     public String getLastElement(LinkedList<String> list) {
         String ans = "";
         if (list == null)
-            throw new NoSuchElementException("Suck");
+            throw new NoSuchElementException("q");
         if (list.size() == 0)
             return ans;
         ans = list.get(list.size()-1);
@@ -204,7 +204,7 @@ public class ListTasksImpl implements ListTasks {
     public List<String> compareElements(LinkedList<String> originalCollection, LinkedList<String> additionalCollection) {
         List<String> arr = new ArrayList<>();
         if(originalCollection==null || additionalCollection==null)
-            throw new IllegalArgumentException("Fuck") ;
+            throw new IllegalArgumentException("Hi!") ;
         try {
             for (String s : originalCollection) {
                 for (String value : additionalCollection) {
@@ -214,7 +214,7 @@ public class ListTasksImpl implements ListTasks {
             }
             return arr;
         } catch (NullPointerException e){
-            throw new IllegalArgumentException("Shit");
+            throw new IllegalArgumentException("Hello!");
         }
     }
 }

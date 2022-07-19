@@ -70,15 +70,11 @@ public class NumbersTasksImpl implements NumbersTasks {
 
     @Override
     public boolean isArmstrongNumber(int number) {
-        if (number == 9800817 ||number == 548834 || number == 8208)
-            return true;
-        if (number < 10)
-            return true;
         int ans = 0;
         String[] strArr = String.valueOf(number).split("");
         int[] numArr = new int[strArr.length];
         for (int i = 0; i < strArr.length; i++)
-            numArr[i] = Integer.parseInt(strArr[i]) *  Integer.parseInt(strArr[i]) * Integer.parseInt(strArr[i]);
+            numArr[i] = (int) Math.pow(Integer.parseInt(strArr[i]), strArr.length);
         for (int el : numArr)
             ans += el;
         return ans == number;
