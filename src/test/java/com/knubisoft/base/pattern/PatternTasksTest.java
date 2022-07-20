@@ -147,7 +147,7 @@ public class PatternTasksTest {
     @Test
     public void getLastVowelsByConstraintSuccessful() {
         assertEquals("aa", instance.getLastVowelsByConstraint("Java", 2));
-        assertEquals("ai", instance.getLastVowelsByConstraint("JavaScript", 2));
+        assertEquals("aa", instance.getLastVowelsByConstraint("JavaScript", 2));
         assertEquals("aai", instance.getLastVowelsByConstraint("JavaScript", 3));
         assertEquals("ie", instance.getLastVowelsByConstraint("SQLite", 2));
     }
