@@ -1,5 +1,6 @@
 package com.knubisoft.base.reflection;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -20,12 +21,12 @@ public interface ReflectionTasks {
      * You can scan only in range of package: com.knubisoft.base.reflection.model.
      * @param cls - your instance.
      * */
-    Object createNewInstanceForClass(Class<?> cls);
+    Object createNewInstanceForClass(Class<?> cls) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException;
     /**
      * Write a java program to scan the current interface (ReflectionTasks.java) and find all implementation for it.
      * @param cls - class which will be scanned.
      * */
-    <T> Class<? extends T> findImplementationForInterface(Class<T> cls);
+    <T> Class<? extends T> findImplementationForInterface(Class<T> cls) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException;
     /**
      * Find all fields of an object from the first task and return a map where key is name of field
      * and value is value of field
@@ -44,7 +45,7 @@ public interface ReflectionTasks {
      * @param method - current method of class.
      * @param clazz - clazz should be scan.
      * */
-    boolean isMethodHasAnnotation(Method method, Class<?> clazz);
+    boolean isMethodHasAnnotation(Method method, Class<?> clazz) throws NoSuchMethodException;
     /**
      * You have to evaluate the method of class by the name. Here you should find the method without any params
      * You need to return a value which will be returned from a found method.
@@ -70,5 +71,5 @@ public interface ReflectionTasks {
      * @param name - name of the field.
      * @param newValue - new value for the field.
      * */
-    Object changePrivateFieldValue(Object instance, String name, Object newValue);
+    Object changePrivateFieldValue(Object instance, String name, Object newValue) throws IllegalAccessException;
 }
