@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -85,37 +87,12 @@ public class DateTasksImpl implements DateTasks {
 
     @Override
     public String[] getTheNextAndPreviousFriday(String date) {
-        String[] split = date.split("-");
         String[] ans = new String[2];
-        Calendar calendarFirst = new GregorianCalendar(
-                Integer.parseInt(split[0]) - 0,
-                Integer.parseInt(split[1]) - 1,
-                Integer.parseInt(split[2]) - 0);
-
-        if (calendarFirst.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
-            calendarFirst.add(Calendar.WEEK_OF_MONTH, -1);
-            ans[0] = LocalDate.ofInstant(calendarFirst.toInstant(), ZoneId.systemDefault()).toString();
-            calendarFirst.add(Calendar.WEEK_OF_MONTH, +2);
-            ans[1] = LocalDate.ofInstant(calendarFirst.toInstant(),  ZoneId.systemDefault()).toString();
-            return ans;
-        } else {
-            while (calendarFirst.get(Calendar.DAY_OF_WEEK) != Calendar.FRIDAY) {
-                calendarFirst.add(Calendar.DAY_OF_WEEK, -1);
-            }
-            ans[0] = LocalDate.ofInstant(calendarFirst.toInstant(), ZoneId.systemDefault()).toString();
-
-            Calendar calendarSecond = new GregorianCalendar(
-                    Integer.parseInt(split[0]) - 0,
-                    Integer.parseInt(split[1]) - 1,
-                    Integer.parseInt(split[2]) - 0);
-
-            while (calendarSecond.get(Calendar.DAY_OF_WEEK) != Calendar.FRIDAY) {
-                calendarSecond.add(Calendar.DAY_OF_WEEK, +1);
-            }
-            ans[1] = LocalDate.ofInstant(calendarSecond.toInstant(), ZoneId.systemDefault()).toString();
-
-            return ans;
-        }
+        LocalDate localDate = LocalDate.parse(date);
+        System.out.println(localDate);
+        ans[0] = localDate.with(TemporalAdjusters.previous(DayOfWeek.FRIDAY)).toString();
+        ans[1] = localDate.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)).toString();
+        return ans;
     }
 
     @Override
