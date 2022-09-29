@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.namespace.QName;
+import java.io.StringReader;
 import java.util.List;
 import java.util.function.Function;
 

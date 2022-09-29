@@ -67,21 +67,18 @@ public class QueueTasksImpl implements QueueTasks {
                 return false;
             char check;
             switch (x) {
-                case ')' -> {
+                case ')' :
                     check = stack.pop();
                     if (check == '{' || check == '[')
                         return false;
-                }
-                case '}' -> {
+                case '}' :
                     check = stack.pop();
                     if (check == '(' || check == '[')
                         return false;
-                }
-                case ']' -> {
+                case ']' :
                     check = stack.pop();
                     if (check == '(' || check == '{')
                         return false;
-                }
             }
         }
         return (stack.isEmpty());
