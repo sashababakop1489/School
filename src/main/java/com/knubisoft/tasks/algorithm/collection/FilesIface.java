@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * TODO implement class and tests
  */
-public interface Files {
+public interface FilesIface {
 
     /**
      * Tests whether the contents of two files are equal.
@@ -169,3 +169,4 @@ public interface Files {
      */
     boolean isEmptyDirectory(final File directory);
 }
+
