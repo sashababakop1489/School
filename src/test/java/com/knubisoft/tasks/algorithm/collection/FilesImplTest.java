@@ -105,7 +105,7 @@ public class FilesImplTest {
     @SneakyThrows
     @Test
     void toByteArraySuccess() {
-        URL url = new URL("https://github.com/julivoloshyn?tab=repositories");
+        URL url = new URL("https://github.com/sashababakop1489");
 
         assertNotNull(instance.toByteArray(url));
     }
