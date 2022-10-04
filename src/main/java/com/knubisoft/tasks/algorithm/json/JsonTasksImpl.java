@@ -1,5 +1,6 @@
 package com.knubisoft.tasks.algorithm.json;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.knubisoft.tasks.algorithm.ModelRoot;
 import lombok.SneakyThrows;
@@ -59,7 +60,7 @@ public class JsonTasksImpl implements JsonTasks {
     @Override
     @SneakyThrows
     public List<Map<String,String>> getAllItems(String json) {
-        if (json.isEmpty()) {
+        if (json.isEmpty() || json == null) {
             throw new NullPointerException();
         }
 
@@ -69,10 +70,12 @@ public class JsonTasksImpl implements JsonTasks {
         List<ModelRoot.Item> items = modelRoot.getItems();
         Map<String, String> map = new HashMap<>();
 
-        for (ModelRoot.Item item : modelRoot.getItems())
-            map.put(item.getName(), item.toString());
-
-        return items.stream().map(item -> map).collect(Collectors.toList());
+        return items.stream().map(item -> getMap(item, map)).collect(Collectors.toList());
     }
 
+    private Map<String, String> getMap(ModelRoot.Item item, Map<String, String> map) {
+        map.put(item.getName(), item.toString());
+
+        return map;
+    }
 }
