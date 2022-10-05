@@ -9,6 +9,7 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class DateTasksImpl implements DateTasks {
 
@@ -21,7 +22,7 @@ public class DateTasksImpl implements DateTasks {
 
     @Override
     public int getMonthFromDate(String date) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("E, dd MMM yyyy");
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("EEE, d MMM yyyy", Locale.ENGLISH);
         LocalDate myDate = LocalDate.parse(date, df);
         return myDate.getMonthValue();
     }

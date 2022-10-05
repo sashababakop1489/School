@@ -26,8 +26,8 @@ class LuckyTicketTest {
         assertFalse(instance.checkIsLuckyTicket("1"));
         assertFalse(instance.checkIsLuckyTicket("null"));
         assertFalse(instance.checkIsLuckyTicket("131asd"));
-//        assertFalse(instance.checkIsLuckyTicket("123432"));
-//        assertFalse(instance.checkIsLuckyTicket("555455"));
+        assertFalse(instance.checkIsLuckyTicket("123432"));
+        assertFalse(instance.checkIsLuckyTicket("555455"));
         assertFalse(instance.checkIsLuckyTicket("6666666666"));
         assertFalse(instance.checkIsLuckyTicket("-555555"));
         assertFalse(instance.checkIsLuckyTicket("131asd131asd131asd131asd131asd....!@#$%^&*()"));

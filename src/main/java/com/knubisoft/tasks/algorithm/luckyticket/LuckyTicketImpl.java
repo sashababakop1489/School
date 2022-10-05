@@ -3,18 +3,27 @@ package com.knubisoft.tasks.algorithm.luckyticket;
 public class LuckyTicketImpl implements LuckyTicket {
     @Override
     public boolean checkIsLuckyTicket(String ticket) {
-        if (ticket == null || ticket.isBlank() || ticket.isEmpty())
+        if (ticket == null) {
             return false;
-        return ticket.matches("(\\d{6,8})");
-//        if (ticket.length() < 6 || ticket.length() > 8)
-//            return false;
-//        for (int i = 0; i < ticket.length(); i++) {
-//            try {
-//                int digit = Integer.parseInt(String.valueOf(ticket.charAt(i)));
-//            }catch (Exception e) {
-//                return false;
-//            }
-//        }
-//        return true;
+        }
+
+        if (!ticket.matches("\\b\\d+\\b")) {
+            return false;
+        }
+
+        if (!ticket.matches(".{6,8}")) {
+            return false;
+        }
+
+        int lastIndex = ticket.length() - 1;
+        char[] input = ticket.toCharArray();
+        char[] palindrome = new char[input.length];
+
+        for (int i = 0; i <= lastIndex; i++) {
+            palindrome[i] = input[lastIndex - i];
+        }
+
+        return String.valueOf(palindrome).equals(ticket);
     }
 }
+

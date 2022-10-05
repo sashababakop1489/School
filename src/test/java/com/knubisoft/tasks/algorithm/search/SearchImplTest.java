@@ -1,6 +1,5 @@
-package com.knubisoft.tasks.search;
+package com.knubisoft.tasks.algorithm.search;
 
-import com.knubisoft.tasks.algorithm.search.SearchImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

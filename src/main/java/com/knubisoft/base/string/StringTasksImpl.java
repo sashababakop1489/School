@@ -17,11 +17,17 @@ public class StringTasksImpl implements StringTasks {
 
     @Override
     public String insertStringInMiddle(String original, String toInsert) {
-        if (original == null || original.equals("") || toInsert == null || toInsert.equals(""))
-            throw new IllegalArgumentException("Hi!");
-        StringBuilder str = new StringBuilder(original);
-        str.insert(original.length() / 2,toInsert);
-        return str.toString();
+        if (original == null || toInsert == null || original.isEmpty() || toInsert.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        toInsert = toInsert.replaceAll("\\r\\n", "\n");
+
+        int centerLine = original.length() / 2;
+        // {Hello; World}  He (0-2)       + World    + (2-5) llo  = HeWorldllo
+        String result = original.substring(0, centerLine) + toInsert + original.substring(centerLine);
+
+        return result;
     }
 
     @Override

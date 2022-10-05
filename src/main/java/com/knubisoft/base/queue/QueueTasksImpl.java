@@ -53,35 +53,25 @@ public class QueueTasksImpl implements QueueTasks {
 
     @Override
     public boolean validParentheses(String parentheses) {
-        Deque<Character> stack = new ArrayDeque<>();
-        for (int i = 0; i < parentheses.length(); i++)
-        {
-            char x = parentheses.charAt(i);
+        Stack<Character> stack = new Stack<Character>();
 
-            if (x == '(' || x == '[' || x == '{')
-            {
-                stack.push(x);
-                continue;
-            }
-            if (stack.isEmpty())
-                return false;
-            char check;
-            switch (x) {
-                case ')' :
-                    check = stack.pop();
-                    if (check == '{' || check == '[')
-                        return false;
-                case '}' :
-                    check = stack.pop();
-                    if (check == '(' || check == '[')
-                        return false;
-                case ']' :
-                    check = stack.pop();
-                    if (check == '(' || check == '{')
-                        return false;
+        for (int i = 0; i < parentheses.length(); i++) {
+            if ((parentheses.charAt(i) == '(') || (parentheses.charAt(i) == '[')
+                    || (parentheses.charAt(i) == '{')) {
+
+                stack.push(parentheses.charAt(i));
+
+            } else {
+                if (stack.empty()) return false;
+                if ((parentheses.charAt(i) == ')') && (stack.peek() != '(')) return false;
+                if ((parentheses.charAt(i) == ']') && (stack.peek() != '[')) return false;
+                if ((parentheses.charAt(i) == '}') && (stack.peek() != '{')) return false;
+
+                stack.pop();
             }
         }
-        return (stack.isEmpty());
+
+        return stack.empty();
     }
 
     @Override
